@@ -11,12 +11,6 @@ Install requirements:
 pip install -r  requirements.txt 
 ```
 
-For run server execute: 
-
-```
-python3 manage.py runserver <host>:<port>
-```
-
 Before run:
 
 ```
