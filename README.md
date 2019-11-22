@@ -14,8 +14,8 @@ pip install -r  requirements.txt
 Before run:
 
 ```
-export FLASK_APP=my_app.py
-export FLASK_ENV=venv (if needed)
+export FLASK_APP=web_app.py
+export FLASK_ENV=venv
 ```
 
 Example run server:
