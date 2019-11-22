@@ -1,7 +1,4 @@
-import os
-import sys
 import functools
-import itertools
 import operator
 import typing
 
@@ -14,11 +11,14 @@ NUM_ITERATIONS = 200
 def loss_sphere(x: np.array):
     return np.sum(x ** 2)
 
+
 def loss_step(x: np.array):
     return np.sum(np.abs(x + 0.5) ** 0.5)
 
+
 def loss_rastrigin(x: np.array):
     return DIMENSION * 10 + np.sum(x ** 2 - 10 * np.cos(2 * np.pi * x))
+
 
 def loss_rosenbrock(x: np.array):
     odd = x[::2]
@@ -30,7 +30,7 @@ class AFSAOptimizer:
 
     @staticmethod
     def random_from_ball(n_dim: int, radius: float):
-        
+
         direction = np.random.normal(0, 1, size=(n_dim,))
         direction /= np.linalg.norm(direction)
 
@@ -39,20 +39,20 @@ class AFSAOptimizer:
 
     def __init__(self,
                  loss_function: typing.Callable[[np.array], float],
-                 vision_radius: float, 
-                 step: float, 
-                 delta: float, 
-                               
-                 try_number: int): 
+                 vision_radius: float,
+                 step: float,
+                 delta: float,
+
+                 try_number: int):
         self._Loss = loss_function
         self._V = vision_radius
         self._S = step
         self._D = delta
         self._T = try_number
-        self._X = [] 
-        self._L = [] 
-        self._minima_loss = None 
-        self._minima_coordinates = None 
+        self._X = []
+        self._L = []
+        self._minima_loss = None
+        self._minima_coordinates = None
 
     def add_unit(self, x: np.array) -> None:
         # Функция добавляет к стае еще одну рыбку, координаты которой
@@ -80,7 +80,6 @@ class AFSAOptimizer:
         for index in range(len(self._X)):
             self._X[index] = self._af_prey_one(self._X[index])
             self._L[index] = self._Loss(self._X[index])
-
 
     def af_swarm(self):
         # Каждая рыбка рыбка хочет пойти к центру стаи
@@ -161,7 +160,6 @@ class AFSAOptimizer:
                 self._minima_loss = self._L[index]
                 self._minima_coordinates = self._X[index].copy()
 
-
     def get_coords(self) -> np.array:
         # Просто возвращает текущее положения всех рыбок, было нужно для
         # построения анимашек
@@ -182,6 +180,7 @@ class AFSAOptimizer:
         # Возвращает координаты самой лучшей найденой точки
         return self._minima_coordinates
 
+
 if __name__ == "__main__":
     DIMENSION = 10
     losses = [loss_sphere, loss_step, loss_rastrigin, loss_rosenbrock]
@@ -192,9 +191,8 @@ if __name__ == "__main__":
 
         opt = AFSAOptimizer(loss_function, 0.5, 0.2, 0.5, 5)
 
-    
         for _ in range(15):
-            opt.add_unit(np.random.uniform(-10, 10, (DIMENSION, )))
+            opt.add_unit(np.random.uniform(-10, 10, (DIMENSION,)))
 
         for _ in range(NUM_ITERATIONS):
             opt.do_step()
