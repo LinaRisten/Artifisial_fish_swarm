@@ -1,0 +1,50 @@
+{% load staticfiles %}
+<head>
+    <meta charset="UTF-8">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    {% block head %}{% endblock %}
+</head>
+<body>
+<div id="wrapper">
+    <div id="content">
+        <div class="menu">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a href="{% url 'afs:calculator' %}">Калькулятор</a>
+                </div>
+                <div>
+                    <ul class="nav navbar-nav navbar-right">
+
+                        {% if request.user.is_superuser %}
+                            <li><a href="/admin">
+                                <span class="glyphicon glyphicon-wrench"></span>
+                                admin_panel </a></li>
+                        {% endif %}
+
+                        {% if not request.user.is_authenticated %}
+                            <li><a href="{% url 'afs:login' %}">
+                                <span class="glyphicon glyphicon-log-in"></span>
+                                Войти </a></li>
+
+                        {% else %}
+
+                            <li><a href="{% url 'afs:logout' %}">
+                                <span class="glyphicon glyphicon-log-out"></span>
+                                Выход ({{ request.user }})</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% block content %}{% endblock %}
+    <footer class="card-footer">
+        <p><span
+                class="glyphicon glyphicon-fire">Андреев Максим</span>
+            <span class="glyphicon glyphicon-flash">Христенко Полина</span>
+        </p>
+    </footer>
+</div>
+</body>

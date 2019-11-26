@@ -1,0 +1,120 @@
+.menu {
+    background-color: #00547E;
+    border-bottom: 4px solid #04A3ED;
+    width: 100%;
+    height: auto;
+    padding: 0 10px;
+    position: fixed;
+    margin: 0px;
+    z-index: 1;
+    opacity: 0.9;
+}
+
+.menu .navbar-nav > .active > a {
+    background-color: #04A3ED;
+    color: white;
+    font-weight: bold;
+}
+
+.menu .navbar-nav > li > a {
+    font-size: 13px;
+    color: white;
+    padding: 10px 35px;
+
+}
+
+.menu .navbar-nav > li > a:hover {
+    background-color: #04A3ED;
+}
+
+.navbar-header > a {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    text-decoration: none;
+    color: white;
+    font-size: 25px;
+    padding: 5px 30px;
+}
+
+.navbar-header > a:hover {
+    text-decoration: none;
+    color: #04A3ED;
+}
+
+.container {
+    padding-top: 70px;
+    align-content: center;
+}
+
+.glyphicon {
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+small {
+    display: block;
+    line-height: 1.428571429;
+    color: #999;
+}
+
+.form-poisk {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.table {
+    width: 800px;
+    height: 100px;
+    margin: auto;
+    font-size: 15px;
+}
+
+.edit-form {
+    width: 600px;
+    margin: 0 auto;
+}
+
+footer {
+    background-color: #747F98;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 35px;
+    text-align: center;
+    color: white;
+    display: table-row;
+    padding: 10px;
+    margin: 1px;
+    line-height: 100%;
+    flex: 0 0 auto;
+}
+
+.well {
+    overflow-x: auto;
+}
+
+footer p {
+    padding: 10px;
+    margin: 1px;
+    line-height: 100%;
+    flex: 0 0 auto;
+}
+
+#wrapper {
+    display: table;
+    height: 100%;
+}
+
+#wrapper, footer {
+    width: 100%;
+}
+
+
+h4 {
+    margin-top: 0
+}
+
+.box{
+display: none}
+
+input:checked ~ .box{display: block}

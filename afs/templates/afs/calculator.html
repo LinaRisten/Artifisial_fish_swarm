@@ -1,0 +1,58 @@
+{% extends 'afs/base.html' %}
+{% load bootstrap %}
+{% block head %}
+<title>Калькулятор</title>
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="well">
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form|bootstrap }}
+            <button class="btn pull-center btn-success"
+                    type="submit">
+                <span class="glyphicon glyphicon-plus"></span>
+                Вычислить
+            </button>
+        </form>
+    </div>
+    <div class="row">
+    </div>
+    {% if calculations %}
+    <h4>Результаты вычислений</h4>
+    <div class="well">
+        <table class="table custab">
+            <thead>
+            <tr>
+                <td class="text-center">Действия</td>
+                <td class="text-center">Функция</td>
+                <td class="text-center">1-ый параметр</td>
+                <td class="text-center">2-ой параметр</td>
+                <td class="text-center">3-ий параметр</td>
+                <td class="text-center">4-ый параметр</td>
+                <td class="text-center">minima_loss_1</td>
+                <td class="text-center">minima_loss_2</td>
+            </tr>
+            </thead>
+            {% for calculation in calculations %}
+            <tr>
+                <td class="text-center">
+                    <a href="{% url 'afs:delete_calculation' calculation.id %}"
+                       class="btn btn-danger btn-xs"><span
+                            class="glyphicon glyphicon-remove"></span>
+                    </a>
+                </td>
+                <td class="text-center">{{ calculation.function }}</td>
+                <td class="text-center">{{ calculation.param_1 }}</td>
+                <td class="text-center">{{ calculation.param_2 }}</td>
+                <td class="text-center">{{ calculation.param_3 }}</td>
+                <td class="text-center">{{ calculation.param_4 }}</td>
+                <td class="text-center">{{ calculation.minima_loss_1 }}</td>
+                <td class="text-center">{{ calculation.minima_loss_2 }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
