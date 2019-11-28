@@ -4,16 +4,16 @@ from django.contrib.auth.models import User
 
 class Calculation(models.Model):
     functions = (
-        ('loss_sphere', 'loss sphere'),
-        ('loss_step', 'loss step'),
-        ('loss_rastrigin', 'loss rastrigin'),
-        ('loss_rosenbrock', 'loss rosenbrock')
+        ('loss_sphere', 'sphere'),
+        ('loss_step', 'step'),
+        ('loss_rastrigin', 'rastrigin'),
+        ('loss_rosenbrock', 'rosenbrock')
     )
-    function = models.CharField(choices=functions, verbose_name='Метод', max_length=15, blank=False)
-    param_1 = models.FloatField(verbose_name='1-ый параметр', blank=False)
-    param_2 = models.FloatField(verbose_name='2-ый параметр', blank=False)
-    param_3 = models.FloatField(verbose_name='3-ый параметр', blank=False)
-    param_4 = models.IntegerField(verbose_name='4-ый параметр', blank=False)
+    function = models.CharField(choices=functions, verbose_name='Функция', max_length=15, blank=False)
+    param_1 = models.FloatField(verbose_name='Дальность зрения', blank=False)
+    param_2 = models.FloatField(verbose_name='Длина шага', blank=False)
+    param_3 = models.FloatField(verbose_name='Дельта', blank=False)
+    param_4 = models.IntegerField(verbose_name='Количество попыток', blank=False)
     user = models.ManyToManyField(User, verbose_name='Пользователь')
-    minima_loss_1 = models.FloatField(verbose_name='minima_loss_1', blank=False)
-    minima_loss_2 = models.FloatField(verbose_name='minima_loss_2', blank=False)
+    minima_loss_1 = models.FloatField(verbose_name='Минимум 1', blank=False)
+    minima_loss_2 = models.FloatField(verbose_name='Минимум 2', blank=False)

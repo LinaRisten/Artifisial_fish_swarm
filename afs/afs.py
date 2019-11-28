@@ -239,4 +239,6 @@ if __name__ == '__main__':
 
     for loss in losses:
         result = run(loss)
-        print(f'minima_loss_1: {result["minima_loss_1"]}\nminima_loss_2: {result["minima_loss_2"]}\n', end='-'*40)
+        # print(f'minima_loss_1: {result["minima_loss_1"]}\nminima_loss_2: {result["minima_loss_2"]}\n', end='-'*40)
+        print('minima_loss_1: {minima_loss_1}\nminima_loss_2: {minima_loss_2}\n'.format(minima_loss_1=result["minima_loss_1"],
+            minima_loss_2=result["minima_loss_2"]), end='-'*40)
